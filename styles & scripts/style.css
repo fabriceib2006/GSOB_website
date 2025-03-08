@@ -80,6 +80,7 @@
   background-image: url('../images/isonga2-removebg-preview.png');
   background-size: cover;
   background-position: center;
+  -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
 }
 .cycling div h3{
