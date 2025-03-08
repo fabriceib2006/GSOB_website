@@ -15,7 +15,10 @@
   padding:10px;
   margin:1% 0;
   vertical-align: top;
-  background-color: rgba(1, 1, 74,1);
+  background-color: rgba(1, 1, 74,0.7);
+  background-image: url('../images/img3.jpg');
+  background-size: cover;
+  background-blend-mode: multiply;
 }
 .updatenews p{
     font-family: serif;
@@ -54,7 +57,7 @@
   vertical-align: top;
   display: inline-block;
   width:40%;
-  background-color: rgba(34, 34, 103,0.6);
+  background-color: rgba(34, 34, 103,0.5);
   margin:1.5% 1.5%;
   height:100%;
   padding: 1%;
