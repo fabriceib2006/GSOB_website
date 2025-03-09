@@ -1,4 +1,3 @@
-
 //counter
 document.addEventListener('DOMContentLoaded', function () {
   const counter1 = document.getElementById('counter1Value');
@@ -45,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
             counter4.textContent = `${count4}+`;
           }
 
-          if (count1 === maxLimit && count2 === maxLimit && count3 === maxLimit && count4 === maxLimit) {
+          if (count1 >= limit1 && count2 >= limit2 && count3 >= limit3 && count4 >= limit4) {
             clearInterval(interval);
           }
         }, 80);
@@ -57,10 +56,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Observe the counter elements
   [counter1, counter2, counter3, counter4].forEach(counter => {
-    observer.observe(counter);
+    if (counter instanceof Element) {
+      observer.observe(counter);
+    }
   });
 });
-
 //loader
 window.addEventListener('load', function () {
   document.querySelector('.loader-wrapper').style.display = 'none';
@@ -78,84 +78,108 @@ function myFunction() {
   }
 }
 document.addEventListener("click", function(event) {
+  var x = document.getElementById("myTopnav");
   var icon = document.getElementById("icon");
   var responsive = document.getElementsByClassName("responsive")[0];
   
-  if (!x.contains(event.target) && !icon.contains(event.target)) {
+  if (x && !x.contains(event.target) && icon && !icon.contains(event.target)) {
     responsive.style.display = "none";
   }
 });
-// contracts on normal screen
 
+// contracts on normal screen
 var modal = document.getElementById("contacts");
-        var btn = document.getElementById("contacts-open");
-        var span = document.getElementsByClassName("close")[0];
-        btn.onclick = function() {
-            modal.style.display = "block";
-        }
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
+var btn = document.getElementById("contacts-open");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+span.onclick = function() {
+  modal.style.display = "none";
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 // contacts on responsive navbar
-
 var modal = document.getElementById("contacts");
 var btn = document.getElementById("contact-open");
 var span = document.getElementsByClassName("close")[0];
 btn.onclick = function() {
-    modal.style.display = "block";
+  modal.style.display = "block";
 }
 span.onclick = function() {
-    modal.style.display = "none";
+  modal.style.display = "none";
 }
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
 }
 
-   //------------------------- reveal codes ----------------
-  function reveal() {
-    var reveals = document.querySelectorAll(".reveal");
-    for (var i = 0; i < reveals.length; i++) {
-      var windowHeight = window.innerHeight;
-      var elementTop = reveals[i].getBoundingClientRect().top;
-      var elementVisible = 150;
-      if (elementTop < windowHeight - elementVisible) {
-        reveals[i].classList.add("active");
-        
-      } else {
-        reveals[i].classList.remove("active");
-      }
+// reveal codes
+function reveal() {
+  var reveals = document.querySelectorAll(".reveal");
+  for (var i = 0; i < reveals.length; i++) {
+    var windowHeight = window.innerHeight;
+    var elementTop = reveals[i].getBoundingClientRect().top;
+    var elementVisible = 150;
+    if (elementTop < windowHeight - elementVisible) {
+      reveals[i].classList.add("active");
+    } else {
+      reveals[i].classList.remove("active");
     }
   }
-  window.addEventListener("scroll",reveal);
+}
+window.addEventListener("scroll", reveal);
 
-  // --------------responsive navbar--------------
+// responsive navbar
+const menuWrapper = document.getElementById("menuwrapper");
+const menuButton = document.getElementById("menu-button");
 
-  const menuWrapper = document.getElementById("menuwrapper");
-  const menuButton = document.getElementById("menu-button");
+menuButton.addEventListener("click", function() {
+  if (menuWrapper.style.display === "none") {
+    menuWrapper.style.display = "block";
+  } else {
+    menuWrapper.style.display = "none";
+  }
+});
 
-  menuButton.addEventListener("click", function() {
-    if (menuWrapper.style.display === "none") {
-      menuWrapper.style.display = "block";
-    } else {
-      menuWrapper.style.display = "none";
-    }
+document.addEventListener("click", function(event) {
+  if (!menuWrapper.contains(event.target) && !menuButton.contains(event.target)) {
+    menuWrapper.style.display = "none";
+  }
+});
+
+
+(function(){
+  emailjs.init("FeFR-_lU1Ne__CgPQ"); // Replace with your EmailJS Public Key
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  emailjs.send("service_5pz7f74", "template_xgi10po", {
+      from_name: document.getElementById("names").value,
+      from_email: document.getElementById("email").value,
+      message: document.getElementById("suggestion").value
+  }).then(function(response) {
+      alert("Message Sent Successfully!");
+      document.getElementById("contact-form").reset();
+  }, function(error) {
+      alert("Failed to send message. Try again!");
   });
-
-  document.addEventListener("click", function(event) {
-    if (!menuWrapper.contains(event.target) && !menuButton.contains(event.target)) {
-      menuWrapper.style.display = "none";
-    }
-  });
-  
+});
 
 
 
+function openPopup() {
+  document.getElementById("popup").style.display = "block";
+}
+
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
 

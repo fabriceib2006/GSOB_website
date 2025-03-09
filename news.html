@@ -10,6 +10,12 @@
 <link rel="stylesheet" type="text/css" href="./styles & scripts/homepage.css" />
 <link rel="stylesheet" type="text/css" href="./styles & scripts/style_News.css" />
 <link rel="stylesheet" type="text/css" href="./styles & scripts/screens.css" />
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+  })();
+</script>
 </head>
 <body>
   <div class="loader-wrapper">
@@ -29,7 +35,7 @@
  </div>
   <section class="newswrapper section">
     <!-- responsive navbar------ -->
-    <img id="menu-button" src="img/menu5.png" height="25px" width="33px" > 
+    <img id="menu-button" src="img/menu5.png" alt="menu_icon" height="25px" width="33px" > 
 <div id="menuwrapper">
   <ul id="menu-list">
     <li>
@@ -66,7 +72,7 @@
 <div class="topnav" id="myTopnav">
   <div class="row">
 <div class="column" id="logo">
-       <img src="img/logo.png">
+       <img src="img/logo.png" alt="logo-image">
        <div style="float: right;padding:10px 0;margin:3% 0">
         <p><b style="font-size:20px">GSO BUTARE </b>  
           <br/> <b style="font-size:7px">S'INSTRUIRE POUR MIEUX SERVIR</b></p>      
@@ -102,16 +108,16 @@
     <div class="row">
       <div class="column">
         <center>
-          <form action="" method="post">
+          <form id="contact-form">
             <h3>Tell us your suggestion here</h3>
             <div class="form-field">
-              <p>Enter your name:</p><input type="text" placeholder="Enter name..."  name="fname">
+              <p>Enter your name:</p><input type="text" id="names" placeholder="Enter name..."  name="fname">
           </div>
           <div class="form-field">
-              <p>Email address:</p><input type="email" placeholder="Enter email..." name="email">
+              <p>Email address:</p><input type="email" id="email" placeholder="Enter email..." name="email">
           </div>
           <div class="form-field">
-              <p>Your suggestion:</p><textarea id="suggestion" name="suggestion"></textarea>
+              <p>Your suggestion:</p><textarea id="suggestion" name="suggestion" ></textarea>
           </div>
           <center><input type="submit" value="submit"></center>
           </form>
@@ -353,54 +359,5 @@
         </div>
       </div>
     </footer>
-    <style>
-      .popup {
-        position: relative;
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100vh;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.9);
-      }
-      
-      .popup-content {
-        background-color: whitesmoke;
-        margin: 10px auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        height:150vh;
-      }
-      .popup-content img{
-          width:100px;
-          height:200px;
-      }
-      .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
-      
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
-    </style>
-    <script>
-      function openPopup() {
-        document.getElementById("popup").style.display = "block";
-      }
-      
-      function closePopup() {
-        document.getElementById("popup").style.display = "none";
-      }
-      </script>
 </body>
 </html>
