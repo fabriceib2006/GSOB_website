@@ -142,7 +142,7 @@
               </a>
             </div>
             <div class="img">
-              <a href="https://wa.me/" target="_blank">
+              <a href="https://wa.me/250788478609" target="_blank">
                 <img src="img/icons/whatsapp.ico" alt="whatsapp icon" class="src">
               </a>
             </div>
@@ -541,5 +541,26 @@
     </div>
   </div>
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  (function() {
+    emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.send("service_5pz7f74", "template_xgi10po", {
+        from_name: document.getElementById("names").value,
+        from_email: document.getElementById("email").value,
+        message: document.getElementById("suggestion").value
+    }).then(function(response) {
+        alert("Message Sent Successfully!");
+        document.getElementById("contact-form").reset();
+    }, function(error) {
+        alert("Failed to send message. Try again!");
+    });
+  });
+</script>
 </body>
 </html>

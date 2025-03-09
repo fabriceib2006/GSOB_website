@@ -153,7 +153,6 @@ document.addEventListener("click", function(event) {
   }
 });
 
-
 (function(){
   emailjs.init("FeFR-_lU1Ne__CgPQ"); // Replace with your EmailJS Public Key
 })();
@@ -172,8 +171,6 @@ document.getElementById("contact-form").addEventListener("submit", function(even
       alert("Failed to send message. Try again!");
   });
 });
-
-
 
 function openPopup() {
   document.getElementById("popup").style.display = "block";
